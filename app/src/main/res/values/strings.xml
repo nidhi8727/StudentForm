@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Bill</string>
+    <string name="student_information_form">Student Information Form</string>
+    <string name="please_fill_out_the_following_details_mentioned_below">Please fill out the following details mentioned below:</string>
+    <string name="name">Name:</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="select_your_favourite_subject">Select your favourite Subject:</string>
+    <string name="data_structures">Data Structures</string>
+    <string name="graphic_design">Graphic Design</string>
+    <string name="favourite_extracurricular_activities">Favourite Extracurricular Activities:</string>
+    <string name="bca">BCA</string>
+    <string name="bba">BBA</string>
+    <string name="academic_year">Academic Year</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="dancing">Dancing</string>
+    <string name="singing">Singing</string>
+    <string name="painting">Painting</string>
+    <string name="coding">Coding</string>
+    <string name="ui_ux">Ui/Ux</string>
+    <string name="b_tech">B.Tech</string>
+    <string name="course">Course:</string>
+    <string name="age">Age</string>
+    <string name="submit">Submit</string>
+    <string name="clear">Clear</string>
+    <string name="exit">Exit</string>
+    <string name="student_form">Student Form</string>
+    <string name="enter_marks">Enter Marks</string>
+    <string name="data_structures_marks">Data Structures Marks:</string>
+    <string name="calculate_total">Calculate Total</string>
+    <string name="total_marks">Total Marks</string>
+    <string name="ui_ux_marks">Ui/Ux Marks</string>
+    <string name="graphic_design_marks">Graphic Design Marks:</string>
+
+    <string-array name="academic_year_array">
+        <item>1st Year</item>
+        <item>2nd Year</item>
+        <item>3rd Year</item>
+        <item>4th Year</item>
+    </string-array>
+</resources>
