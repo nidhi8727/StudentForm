@@ -4,11 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -27,10 +30,13 @@ public class MainActivity extends AppCompatActivity {
     RadioButton selectedCourseRadioButton;
 
     DatePicker dp1;
-    Button submitButton, clearButton, exitButton;
+    Button submitButton, clearButton, exitButton, demoAlertButton, deleteRecordButton;
     EditText marksEditText, graphicDesignMarksEditText, uiUxMarksEditText;
     TextView totalMarksValueTextView, graphicDesignTotalMarksTextView, uiUxTotalMarksTextView;
     Button calculateTotalButton;
+
+    ListView listView;
+    String[] semesters = {"Semester 1", "Semester 2", "Semester 3", "Semester 4", "Semester 5", "Semester 6", "Semester 7", "Semester 8"};
 
     CheckBox dataStructuresCheckBox, graphicDesignCheckBox, uiUxCheckBox, dancing, singing, painting, coding;
 
@@ -75,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         linearGraphicDesign = findViewById(R.id.gdlinear);
         linearUiUx = findViewById(R.id.uiuxlinear);
         totalMarksLinear = findViewById(R.id.totalmarks_linear);
+
+        demoAlertButton = findViewById(R.id.b1);
+        deleteRecordButton = findViewById(R.id.b2);
 
 
 
@@ -149,6 +158,42 @@ public class MainActivity extends AppCompatActivity {
                 calculateTotalMarks();
             }
         });
+
+        demoAlertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create and show the demo alert dialog
+                showDialog("Demo Alert", "This is demo alert.");
+            }
+        });
+
+        deleteRecordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create and show the delete record dialog
+                showDialog("Delete Record", "Are you sure you want to delete this record?");
+            }
+        });
+
+        listView = findViewById(R.id.listView);
+
+        // Create an ArrayAdapter to populate the ListView with the semester items
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, semesters);
+
+        // Set the adapter to the ListView
+        listView.setAdapter(adapter);
+
+        // Set up item click listener for the ListView
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the clicked semester
+                String selectedSemester = semesters[position];
+                // Display a toast message with the selected semester
+                Toast.makeText(MainActivity.this, selectedSemester, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
     public String getMyDate() {
         String s = "Current Date : ";
@@ -268,5 +313,26 @@ public class MainActivity extends AppCompatActivity {
         double percentage = (double) totalMarks / maxMarks * 100;
 
         return percentage;
+    }
+
+    private void showDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Perform any action here when OK is clicked
+                dialog.dismiss(); // Dismiss the dialog
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Perform any action here when Cancel is clicked
+                dialog.dismiss(); // Dismiss the dialog
+            }
+        });
+        builder.show(); // Show the dialog
     }
 }
